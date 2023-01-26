@@ -1,0 +1,18 @@
+.FilterInputField{
+    position:relative;
+    display:flex;
+    flex-wrap: wrap;
+    font-size: 15px;
+    left: 90%;
+    justify-items: center;
+}
+
+/* .filterTitle{
+    width: 120px;
+    margin: 5px;
+} */
+
+select{
+    margin:5px;
+    width: 120px;
+}

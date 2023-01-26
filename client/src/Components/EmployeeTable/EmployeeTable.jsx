@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import "./EmployeeTable.css";
+import FilterInputField from "../FilterInputField";
 
-const EmployeeTable = ({ employees, onDelete }) => (
+const EmployeeTable = ({ data, onDelete, setData }) => {
+    let employees = data;
+    return(
   <div className="EmployeeTable">
     <table>
+        <FilterInputField employees={data} setEmployees={setData}/>
       <thead>
         <tr>
           <th>Name</th>
@@ -31,6 +35,7 @@ const EmployeeTable = ({ employees, onDelete }) => (
       </tbody>
     </table>
   </div>
-);
 
+);
+        }
 export default EmployeeTable;

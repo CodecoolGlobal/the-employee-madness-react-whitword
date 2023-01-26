@@ -36,6 +36,11 @@ app.get("/api/employees/", async (req, res) => {
   return res.json(employees);
 });
 
+app.get("/robert/", async (req, res) => {
+  const employees = await EmployeeModel.find({name: { $regex: "robert", $options: 'i'}});
+  return res.json(employees)
+});
+
 app.get("/api/employees/:id", (req, res) => {
   return res.json(req.employee);
 });
