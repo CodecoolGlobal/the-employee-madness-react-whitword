@@ -2,17 +2,21 @@
     position:relative;
     display:flex;
     flex-wrap: wrap;
-    font-size: 15px;
-    left: 90%;
+    /* font-size: 15px; */
+    left: 5%;
     justify-items: center;
+    width: 100%;
 }
 
-/* .filterTitle{
-    width: 120px;
-    margin: 5px;
-} */
+.filterTitle{
+    width: 40%;
+    margin: 10px;
+    justify-items: center;
+
+}
 
 select{
-    margin:5px;
-    width: 120px;
+    position:relative;
+    margin: 10px;
+    width: 100%;
 }

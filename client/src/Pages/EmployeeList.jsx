@@ -48,7 +48,7 @@ const EmployeeList = () => {
     return <Loading />;
   }
 
-  return <EmployeeTable data={data} onDelete={handleDelete} setData={setData}/>;
+  return <EmployeeTable employees={data} onDelete={handleDelete} setEmployees={setData}/>;
 };
 
 export default EmployeeList;

@@ -33,18 +33,18 @@ const FilterInputField = ({ employees, setEmployees }) => {
     return (
 
         <div className={"FilterInputField"}>
-            {/* <div className={"filterTitle"}>Filter by Level */}
+            <div className={"filterTitle"}>Filter by Level
                 <select onChange={(e) => handleFilterLevel(e.target.value)}>
-                    <option value={levelsWithNoDuplicates}>All</option>
-                    {levelsWithNoDuplicates.map(i => <option value={i}>{i}</option>)}
+                    <option key={"a1"} value={levelsWithNoDuplicates}>All</option>
+                    {levelsWithNoDuplicates.map(i => <option key={i} value={i}>{i}</option>)}
                 </select>
-                {/* </div> */}
-            {/* <div className={"filterTitle"}>Filter by Position */}
+                </div>
+            <div className={"filterTitle"}>Filter by Position
                 <select onChange={(e) => handleFilterPosition(e.target.value)}>
-                    <option value={positionsWithNoDuplicates}>All</option>
-                    {positionsWithNoDuplicates.map(i => <option value={i}>{i}</option>)}
+                    <option key={"a1"}value={positionsWithNoDuplicates}>All</option>
+                    {positionsWithNoDuplicates.map(i => <option key={i} value={i}>{i}</option>)}
                 </select>
-                {/* </div> */}
+                </div>
         </div>
 
     )

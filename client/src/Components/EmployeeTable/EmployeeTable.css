@@ -1,3 +1,11 @@
 .EmployeeTable {
   padding: 0.5rem;
 }
+
+.FilterAndArrangeMenu{
+  width: 60%;
+  display:flex;
+  justify-content: flex-start;
+  align-items:stretch;
+  justify-self:flex-start
+}
