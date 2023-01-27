@@ -76,7 +76,7 @@ app.delete("/api/employees/:id", async (req, res, next) => {
     return next(err);
   }
 });
-//********************************************************** */
+
 app.use("/api/equipment/:id", async (req, res, next) => {
   let equipment = null;
 
@@ -134,7 +134,6 @@ app.delete("/api/equipment/:id", async (req, res, next) => {
   }
 });
 
-//*********************************************************** */
 const main = async () => {
   await mongoose.connect(MONGO_URL);
 
