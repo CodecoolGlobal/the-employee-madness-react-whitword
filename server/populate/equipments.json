@@ -1,0 +1,37 @@
+[
+    {
+        "name": "LapTop",
+        "type": "office device",
+        "amount": 8
+    },
+    {
+        "name": "PC",
+        "type": "office device",
+        "amount": 8
+    },
+    {
+        "name": "Printer",
+        "type": "office device",
+        "amount": 4
+    },
+    {
+        "name": "Air conditioner",
+        "type": "office device",
+        "amount": 12
+    },
+    {
+        "name": "Refridgerator",
+        "type": "kitchen device",
+        "amount": 3
+    },
+    {
+        "name": "Microwave owen",
+        "type": "kitchen device",
+        "amount": 3
+    },
+    {
+        "name": "Coffee machine",
+        "type": "kitchen device",
+        "amount": 3
+    }    
+]
