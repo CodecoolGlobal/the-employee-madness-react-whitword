@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./EquipmentTable.css";
 
-const EquipmentTable = ({ equipment, onDelete, setEquipment }) => {
+const EquipmentTable = ({ equipments, onDelete, setEquipments }) => {
   console.log("table run")
   return (
     <div className="EquipmentTable">
@@ -15,7 +15,7 @@ const EquipmentTable = ({ equipment, onDelete, setEquipment }) => {
           </tr>
         </thead>
         <tbody>
-          {equipment.map((equipment) => (
+          {equipments.map((equipment) => (
             <tr key={equipment._id}>
               <td>{equipment.name}</td>
               <td>{equipment.type}</td>

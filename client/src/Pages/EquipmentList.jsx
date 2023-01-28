@@ -21,8 +21,8 @@ const EquipmentList = () => {
       console.log(err);
     });
 
-    setData((equipment) => {
-      return equipment.filter((equipment) => equipment._id !== id);
+    setData((equipments) => {
+      return equipments.filter((equipment) => equipment._id !== id);
     });
   };
 
@@ -30,9 +30,9 @@ const EquipmentList = () => {
     const controller = new AbortController();
 
     fetchEquipment(controller.signal)
-      .then((equipment) => {
+      .then((equipments) => {
         setLoading(false);
-        setData(equipment);
+        setData(equipments);
       })
       .catch((error) => {
         if (error.name !== "AbortError") {
@@ -48,7 +48,7 @@ const EquipmentList = () => {
     return <Loading />;
   }
 
-  return <EquipmentTable equipment={data} onDelete={handleDelete} setEquipment={setData}/>;
+  return <EquipmentTable equipments={data} onDelete={handleDelete} setEquipments={setData}/>;
 };
 
 export default EquipmentList;

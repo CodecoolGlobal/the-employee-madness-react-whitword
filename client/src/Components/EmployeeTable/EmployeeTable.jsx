@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./EmployeeTable.css";
-import FilterInputField from "../FilterInputField";
-import ArrangeSelectors from "../ArrangeSelectors/ArrangeSelectors";
+import FilterInputField from "../EmployeeFilterInputField";
+import ArrangeSelectors from "../EmployeeArrangeSelectors";
 
 const EmployeeTable = ({ employees, onDelete, setEmployees }) => {
   console.log("table run")
