@@ -3,13 +3,13 @@ import "./EmployeeTable.css";
 import FilterInputField from "../EmployeeFilterInputField";
 import ArrangeSelectors from "../EmployeeArrangeSelectors";
 
-const EmployeeTable = ({ employees, onDelete, setEmployees }) => {
+const EmployeeTable = ({ originalEmployees, employees, onDelete, setEmployees }) => {
   console.log("table run")
   return (
     <div className="EmployeeTable">
       <div className={"FilterAndArrangeMenu"}>
         <ArrangeSelectors employees={employees} setEmployees={setEmployees} />
-        <FilterInputField employees={employees} setEmployees={setEmployees} />
+        <FilterInputField originalEmployees={originalEmployees} setEmployees={setEmployees} />
       </div>
       <table>
         <thead>

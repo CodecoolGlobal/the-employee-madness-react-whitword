@@ -1,10 +1,10 @@
 import './FilterInputField.css';
 
 
-const FilterInputField = ({ employees, setEmployees }) => {
+const FilterInputField = ({ originalEmployees, setEmployees }) => {
 
     let positions = [];
-    employees.map(i => (positions.push(i.position)));
+    originalEmployees.map(i => (positions.push(i.position)));
     const positionsWithNoDuplicates = positions.reduce((accumulator, currentValue) => {
         if (!accumulator.includes(currentValue)) {
             return [...accumulator, currentValue];
@@ -13,7 +13,7 @@ const FilterInputField = ({ employees, setEmployees }) => {
     }, []);
 
     let levels = [];
-    employees.map(i => (levels.push(i.level)));
+    originalEmployees.map(i => (levels.push(i.level)));
     const levelsWithNoDuplicates = levels.reduce((accumulator, currentValue) => {
         if (!accumulator.includes(currentValue)) {
             return [...accumulator, currentValue];
@@ -23,25 +23,26 @@ const FilterInputField = ({ employees, setEmployees }) => {
 
 
     const handleFilterPosition = (value) => {
-        const filteredEmployees = employees.filter(i=> i.position === value)
-        setEmployees(filteredEmployees)
+        const filteredEmployees = originalEmployees.filter(i=> i.position === value)
+        value === "all" ? setEmployees(originalEmployees) : setEmployees(filteredEmployees)
     }
     const handleFilterLevel = (value) => {
-        const filteredEmployees = employees.filter(i=> i.level === value)
-        setEmployees(filteredEmployees)
+        const filteredEmployees = originalEmployees.filter(i=> i.level === value)
+        value === "all" ? setEmployees(originalEmployees) : setEmployees(filteredEmployees)
+
     }
     return (
 
         <div className={"FilterInputField"}>
             <div className={"filterTitle"}>Filter by Level
                 <select onChange={(e) => handleFilterLevel(e.target.value)}>
-                    <option key={"a1"} value={levelsWithNoDuplicates}>All</option>
+                    <option key={"a1"} value={"all"}>All</option>
                     {levelsWithNoDuplicates.map(i => <option key={i} value={i}>{i}</option>)}
                 </select>
                 </div>
             <div className={"filterTitle"}>Filter by Position
                 <select onChange={(e) => handleFilterPosition(e.target.value)}>
-                    <option key={"a1"}value={positionsWithNoDuplicates}>All</option>
+                    <option key={"a1"}value={"all"}>All</option>
                     {positionsWithNoDuplicates.map(i => <option key={i} value={i}>{i}</option>)}
                 </select>
                 </div>
