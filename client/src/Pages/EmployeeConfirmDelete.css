@@ -1,0 +1,20 @@
+.modal {
+    display: block;
+    justify-content: center;
+    position: fixed;
+    z-index: 1;
+    left: 35%;
+    top: 25%;
+    width: auto;
+    height: auto;
+    background-color: rgb(76, 117, 219);
+    color: white;
+    font-size: larger;
+    text-align: center;
+    padding: 40px;
+    border-radius: 5px;
+  }
+  
+  .hidden {
+    display: none;
+  }
