@@ -2,14 +2,38 @@ import { Link } from "react-router-dom";
 import "./EmployeeTable.css";
 import FilterInputField from "../EmployeeFilterInputField";
 import ArrangeSelectors from "../EmployeeArrangeSelectors";
+import { useState } from "react";
 
-const EmployeeTable = ({ originalEmployees, employees, onDelete, setEmployees }) => {
+
+const EmployeeTable = ({ employees, onDelete, setEmployees }) => {
+  let allPositions = [];
+  employees.map(i => (allPositions.push(i.position)));
+  const allPositionsWithNoDuplicates = allPositions.reduce((accumulator, currentValue) => {
+    if (!accumulator.includes(currentValue)) {
+      return [...accumulator, currentValue];
+    }
+    return accumulator;
+  }, []);
+  
+  const [position, setPosition] = useState(allPositionsWithNoDuplicates);
+
+  let allLevels = [];
+  employees.map(i => (allLevels.push(i.level)));
+  const allLevelsWithNoDuplicates = allLevels.reduce((accumulator, currentValue) => {
+      if (!accumulator.includes(currentValue)) {
+          return [...accumulator, currentValue];
+      }
+      return accumulator;
+  }, []);
+
+const [level, setLevel] = useState(allLevelsWithNoDuplicates);
+
   console.log("table run")
   return (
     <div className="EmployeeTable">
       <div className={"FilterAndArrangeMenu"}>
         <ArrangeSelectors employees={employees} setEmployees={setEmployees} />
-        <FilterInputField originalEmployees={originalEmployees} setEmployees={setEmployees} />
+        <FilterInputField allLevels={allLevelsWithNoDuplicates} allPositions={allPositionsWithNoDuplicates} setLevel={setLevel} setPosition={setPosition} />
       </div>
       <table>
         <thead>
@@ -21,7 +45,7 @@ const EmployeeTable = ({ originalEmployees, employees, onDelete, setEmployees })
           </tr>
         </thead>
         <tbody>
-          {employees.map((employee) => (
+          {employees.filter(e=> level.includes(e.level) && position.includes(e.position)).map((employee) => (
             <tr key={employee._id}>
               <td>{employee.name}</td>
               <td>{employee.level}</td>

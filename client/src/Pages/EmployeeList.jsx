@@ -12,8 +12,6 @@ const deleteEmployee = (id) => {
   );
 };
 
-let originalEmployees;
-
 const EmployeeList = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
@@ -35,7 +33,6 @@ const EmployeeList = () => {
       .then((employees) => {
         setLoading(false);
         setData(employees);
-        originalEmployees = employees;
       })
       .catch((error) => {
         if (error.name !== "AbortError") {
@@ -51,7 +48,7 @@ const EmployeeList = () => {
     return <Loading />;
   }
 
-  return <EmployeeTable originalEmployees={originalEmployees} employees={data} onDelete={handleDelete} setEmployees={setData}/>;
+  return <EmployeeTable employees={data} onDelete={handleDelete} setEmployees={setData}/>;
 };
 
 export default EmployeeList;
