@@ -5,7 +5,7 @@ import EquipmentForm from "../Components/EquipmentForm";
 import Loading from "../Components/Loading";
 
 const updateEquipment = (equipment) => {
-  return fetch(`/api/equipment/${equipment._id}`, {
+  return fetch(`/api/equipments/${equipment._id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -15,7 +15,7 @@ const updateEquipment = (equipment) => {
 };
 
 const fetchEquipment = (id) => {
-  return fetch(`/api/equipment/${id}`).then((res) => res.json());
+  return fetch(`/api/equipments/${id}`).then((res) => res.json());
 };
 
 const EquipmentUpdater = () => {
@@ -42,7 +42,7 @@ const EquipmentUpdater = () => {
     setUpdateLoading(true);
     updateEquipment(equipment)
       .then(() => {
-        navigate("/equipment");
+        navigate("/equipments");
       })
       .catch((error) => {
         throw error;
@@ -61,7 +61,7 @@ const EquipmentUpdater = () => {
       equipment={equipment}
       onSave={handleUpdateEquipment}
       disabled={updateLoading}
-      onCancel={() => navigate("/equipment")}
+      onCancel={() => navigate("/equipments")}
     />
   );
 };

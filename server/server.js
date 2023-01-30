@@ -77,7 +77,7 @@ app.delete("/api/employees/:id", async (req, res, next) => {
   }
 });
 
-app.use("/api/equipment/:id", async (req, res, next) => {
+app.use("/api/equipments/:id", async (req, res, next) => {
   let equipment = null;
 
   try {
@@ -94,16 +94,16 @@ app.use("/api/equipment/:id", async (req, res, next) => {
   next();
 });
 
-app.get("/api/equipment/", async (req, res) => {
+app.get("/api/equipments/", async (req, res) => {
   const equipment = await EquipmentModel.find().sort({ created: "desc" });
   return res.json(equipment);
 });
 
-app.get("/api/equipment/:id", (req, res) => {
+app.get("/api/equipments/:id", (req, res) => {
   return res.json(req.equipment);
 });
 
-app.post("/api/equipment/", async (req, res, next) => {
+app.post("/api/equipments/", async (req, res, next) => {
   const equipment = req.body;
 
   try {
@@ -114,7 +114,7 @@ app.post("/api/equipment/", async (req, res, next) => {
   }
 });
 
-app.patch("/api/equipment/:id", async (req, res, next) => {
+app.patch("/api/equipments/:id", async (req, res, next) => {
   const equipment = req.body;
 
   try {
@@ -125,7 +125,7 @@ app.patch("/api/equipment/:id", async (req, res, next) => {
   }
 });
 
-app.delete("/api/equipment/:id", async (req, res, next) => {
+app.delete("/api/equipments/:id", async (req, res, next) => {
   try {
     const deleted = await req.equipment.delete();
     return res.json(deleted);

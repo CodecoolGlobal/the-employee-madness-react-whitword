@@ -36,15 +36,15 @@ const router = createBrowserRouter([
         element: <EmployeeUpdater />,
       },
       {
-        path: "/equipment",
+        path: "/equipments",
         element: <EquipmentList />,
       },
       {
-        path: "/equipment/create",
+        path: "/equipments/create",
         element: <EquipmentCreator />,
       },
       {
-        path: "/equipment/update/:id",
+        path: "/equipments/update/:id",
         element: <EquipmentUpdater />,
       },
       {

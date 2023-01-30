@@ -3,11 +3,11 @@ import Loading from "../Components/Loading";
 import EquipmentTable from "../Components/EquipmentTable";
 
 const fetchEquipment = (signal) => {
-  return fetch("/api/equipment", { signal }).then((res) => res.json());
+  return fetch("/api/equipments", { signal }).then((res) => res.json());
 };
 
 const deleteEquipment = (id) => {
-  return fetch(`/api/equipment/${id}`, { method: "DELETE" }).then((res) =>
+  return fetch(`/api/equipments/${id}`, { method: "DELETE" }).then((res) =>
     res.json()
   );
 };

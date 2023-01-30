@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import EquipmentForm from "../Components/EquipmentForm";
 
 const createEquipment = (equipment) => {
-  return fetch("/api/equipment", {
+  return fetch("/api/equipments", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -21,7 +21,7 @@ const EquipmentCreator = () => {
 
     createEquipment(equipment)
       .then(() => {
-        navigate("/equipment");
+        navigate("/equipments");
       })
       .catch((err) => {
         throw err;
@@ -33,7 +33,7 @@ const EquipmentCreator = () => {
 
   return (
     <EquipmentForm
-      onCancel={() => navigate("/equipment")}
+      onCancel={() => navigate("/equipments")}
       disabled={loading}
       onSave={handleCreateEquipment}
     />
