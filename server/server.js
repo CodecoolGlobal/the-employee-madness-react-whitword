@@ -95,8 +95,8 @@ app.use("/api/equipments/:id", async (req, res, next) => {
 });
 
 app.get("/api/equipments/", async (req, res) => {
-  const equipment = await EquipmentModel.find().sort({ created: "desc" });
-  return res.json(equipment);
+  const equipments = await EquipmentModel.find().sort({ created: "desc" });
+  return res.json(equipments);
 });
 
 app.get("/api/equipments/:id", (req, res) => {

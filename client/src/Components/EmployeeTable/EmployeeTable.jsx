@@ -28,7 +28,18 @@ const EmployeeTable = ({ employees, onDelete, setEmployees }) => {
 
 const [level, setLevel] = useState(allLevelsWithNoDuplicates);
 
-  console.log("table run")
+const handleCheckBoxChange = (employee, value) => {
+employee.present = value
+setEmployees([...employees])
+
+  return fetch(`/api/employees/${employee._id}`, {
+  method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(employee),
+  }).then((res) => res.json())
+}
   return (
     <div className="EmployeeTable">
       <div className={"FilterAndArrangeMenu"}>
@@ -41,6 +52,7 @@ const [level, setLevel] = useState(allLevelsWithNoDuplicates);
             <th>Name</th>
             <th>Level</th>
             <th>Position</th>
+            <th>Present</th>
             <th />
           </tr>
         </thead>
@@ -50,6 +62,7 @@ const [level, setLevel] = useState(allLevelsWithNoDuplicates);
               <td>{employee.name}</td>
               <td>{employee.level}</td>
               <td>{employee.position}</td>
+              <td><input checked={employee.present} type={"checkbox"} onChange={(e)=> handleCheckBoxChange(employee, e.target.checked)} ></input></td>
               <td>
                 <Link to={`/update/${employee._id}`}>
                   <button type="button">Update</button>

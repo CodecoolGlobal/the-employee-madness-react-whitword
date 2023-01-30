@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import "./EquipmentTable.css";
 
 const EquipmentTable = ({ equipments, onDelete, setEquipments }) => {
-  console.log("table run")
   return (
     <div className="EquipmentTable">
       <table>

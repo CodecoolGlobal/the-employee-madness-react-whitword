@@ -10,6 +10,9 @@ const Layout = () => (
           <Link to="/">Employees</Link>
         </li>
         <li className="grow">
+          <Link to="/missing">Missing Employees</Link>
+        </li>
+        <li className="grow">
           <Link to="/equipments">Equipments</Link>
         </li>
         <li>
@@ -22,7 +25,6 @@ const Layout = () => (
             <button type="button">Create Equipment</button>
           </Link>
         </li>
-
       </ul>
     </nav>
     <Outlet />
