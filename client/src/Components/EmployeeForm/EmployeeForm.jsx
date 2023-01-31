@@ -46,6 +46,33 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
         />
       </div>
 
+      <div className="control">
+        <label htmlFor="current_salary">Current salary:</label>
+        <input
+          defaultValue={employee ? employee.current_salary : null}
+          name="current_salary"
+          id="current_salary"
+        />
+      </div>
+
+      <div className="control">
+        <label htmlFor="desired_salary">Desired salary:</label>
+        <input
+          defaultValue={employee ? employee.desired_salary : null}
+          name="desired_salary"
+          id="desired_salary"
+        />
+      </div>
+
+      <div className="control">
+        <label htmlFor="fav_color">Favourite color:</label>
+        <input
+          defaultValue={employee ? employee.fav_color : null}
+          name="fav_color"
+          id="fav_color"
+        />
+      </div>
+
       <div className="buttons">
         <button type="submit" disabled={disabled}>
           {employee ? "Update Employee" : "Create Employee"}

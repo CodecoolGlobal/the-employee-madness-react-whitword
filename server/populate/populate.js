@@ -5,6 +5,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const names = require("./names.json");
 const levels = require("./levels.json");
+const colors = require("./colors.json");
 const positions = require("./positions.json");
 const equipmentsJson = require("./equipments.json");
 const EmployeeModel = require("../db/employee.model");
@@ -21,12 +22,17 @@ const pick = (from) => from[Math.floor(Math.random() * (from.length - 0))];
 
 const populateEmployees = async () => {
   await EmployeeModel.deleteMany({});
+  const randomPresent = [true, false];
 
   const employees = names.map((name) => ({
     name,
     level: pick(levels),
     position: pick(positions),
-    present: false
+    current_salary: Math.floor(Math.random() * (3500 - 2000) + 2000),
+    desired_salary: Math.floor(Math.random() * (7500 - 4000) + 4000),
+    present: pick(randomPresent),
+    starting_date: new Date((Math.floor(Math.random() * (2022 - 1990) + 1990)), (Math.floor(Math.random() * (12 - 1) + 1)), 2),
+    fav_color: pick(colors)
   }));
 
   await EmployeeModel.create(...employees);
@@ -39,7 +45,7 @@ const populateEquipments = async () => {
   const equipments = equipmentsJson.map((equipment) => ({
     name: equipment.name,
     type: equipment.type,
-    amount: equipment.amount
+    amount: Math.floor(Math.random() * (25 - 1) + 1) //randomNumber between 1 and 25
   }));
 
   await EquipmentModel.create(...equipments);

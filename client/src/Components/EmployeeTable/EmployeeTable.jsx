@@ -57,6 +57,11 @@ const EmployeeTable = ({ employees, onDelete, setEmployees }) => {
             <th>Name</th>
             <th>Level</th>
             <th>Position</th>
+            <th>Current salary</th>
+            <th>Desired salary</th>
+            <th>Difference(salary)</th>
+            <th>Starting date</th>
+            <th>Fav. color</th>
             <th>Present</th>
             <th />
           </tr>
@@ -67,6 +72,11 @@ const EmployeeTable = ({ employees, onDelete, setEmployees }) => {
               <td>{employee.name}</td>
               <td>{employee.level}</td>
               <td>{employee.position}</td>
+              <td>{employee.current_salary / 1000.0}k 🃏</td>
+              <td>{employee.desired_salary / 1000.0}k 🃏</td>
+              <td>{(employee.current_salary - employee.desired_salary) / 1000.0}k 🃏</td>
+              <td>{employee.starting_date.slice(0, 10)}</td>
+              <td style={{color: employee.fav_color}}>{employee.fav_color}</td>
               <td><input checked={employee.present} type={"checkbox"} onChange={(e) => handleCheckBoxChange(employee, e.target.checked)} ></input></td>
               <td>
                 <Link to={`/update/${employee._id}`}>

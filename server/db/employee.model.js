@@ -7,7 +7,20 @@ const EmployeeSchema = new Schema({
   name: String,
   level: String,
   position: String,
+  current_salary: {
+    type: Number,
+    default: 0
+  },
+  desired_salary: {
+    type: Number,
+    default: 0
+  },
   present: false,
+  starting_date: {
+    type: Date,
+    default: Date.now,
+  },
+  fav_color: String,
   created: {
     type: Date,
     default: Date.now,
