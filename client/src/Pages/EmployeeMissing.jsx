@@ -33,6 +33,7 @@ const EmployeeMissing = () => {
         fetchEmployees(controller.signal)
             .then((employees) => {
                 setLoading(false);
+                // setData(employees);
                 setData(employees.filter(e=>!e.present));
             })
             .catch((error) => {
@@ -48,9 +49,9 @@ const EmployeeMissing = () => {
     if (loading) {
         return <Loading />;
     }
+    // const filteredEmployees = ([...data].filter(e=>!e.present))
 
     return (
-
         <EmployeeTable employees={data} onDelete={handleDelete} setEmployees={setData} />
     )
 };

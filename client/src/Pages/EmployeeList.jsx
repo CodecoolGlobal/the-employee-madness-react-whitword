@@ -12,7 +12,7 @@ const deleteEmployee = (id) => {
   );
 };
 
-const EmployeeList = () => {
+const EmployeeList = ({path}) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
 
@@ -48,8 +48,12 @@ const EmployeeList = () => {
     return <Loading />;
   }
 
+  let filteredEmployees = data;
+  if (path==="/top-paid"){
+    filteredEmployees = ([...data].sort((a, b) => b.current_salary-a.current_salary)).splice(0,3)
+  }
   return (
-        <EmployeeTable employees={data} onDelete={handleDelete} setEmployees={setData}/>
+        <EmployeeTable employees={filteredEmployees} onDelete={handleDelete} setEmployees={setData}/>
   )
 };
 

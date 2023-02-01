@@ -41,6 +41,10 @@ const router = createBrowserRouter([
         element: <EmployeeMissing />,
       },
       {
+        path: "/top-paid",
+        element: <EmployeeList path={"/top-paid"}/>,
+      },
+      {
         path: "/equipments",
         element: <EquipmentList />,
       },
