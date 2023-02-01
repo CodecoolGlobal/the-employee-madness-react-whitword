@@ -50,8 +50,8 @@ const EmployeeTable = ({ employees, onDelete, setEmployees }) => {
       <div className={"FilterAndArrangeMenu"}>
         <ArrangeSelectors employees={employees} setEmployees={setEmployees} />
         <FilterInputField allLevels={allLevelsWithNoDuplicates} allPositions={allPositionsWithNoDuplicates} setLevel={setLevel} setPosition={setPosition} />
-        <Link style={{backgroundColor: "rgb(76, 117, 219)", margin: 10, padding: 5, borderRadius: 5}} to="/top-paid">Top-paid employees</Link>
-        <Link style={{backgroundColor: "rgb(76, 117, 219)", margin: 10, padding: 5, borderRadius: 5}} to="/missing">Missing employees</Link>
+        <Link style={{color: "white", backgroundColor: "rgb(76, 117, 219)", padding: 20, borderRadius: 5}} to="/top-paid">Top-paid employees</Link>
+        <Link style={{color: "white", backgroundColor: "rgb(76, 117, 219)", marginLeft: 310, padding: 20, borderRadius: 5}} to="/missing">Missing employees</Link>
       </div>
       <table>
         <thead>

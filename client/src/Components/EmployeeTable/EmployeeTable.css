@@ -3,9 +3,10 @@
 }
 
 .FilterAndArrangeMenu{
-  width: 60%;
+  width: 100%;
   display:flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
-  align-items:stretch;
-  justify-self:flex-start
+  align-items:space-between;
+  justify-self:flex-start;
 }

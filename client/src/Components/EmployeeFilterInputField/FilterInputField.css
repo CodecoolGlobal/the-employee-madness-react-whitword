@@ -1,22 +1,22 @@
 .FilterInputField{
+    width: 10%; 
+    margin-right: 10%;
     position:relative;
     display:flex;
-    flex-wrap: wrap;
-    /* font-size: 15px; */
-    left: 5%;
-    justify-items: center;
-    width: 100%;
+    /* flex-wrap: wrap; */
+    justify-items: start;
 }
 
 .filterTitle{
-    width: 40%;
-    margin: 10px;
-    justify-items: center;
-
+    margin-right: 5%;
+    position:relative;
+    display:flex;
+    flex-wrap: wrap;
+    /* margin: 5px; */
+    /* justify-items: center; */
 }
 
 select{
     position:relative;
-    margin: 10px;
-    width: 100%;
+    /* margin: 5px; */
 }
