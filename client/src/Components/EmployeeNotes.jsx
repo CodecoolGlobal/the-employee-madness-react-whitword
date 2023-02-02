@@ -23,6 +23,7 @@ const HandleSubmit = () => {
     const upDatedEmployee = {...employee}
     console.log(upDatedEmployee);
     upDatedEmployee.notes.push(newNote);
+    setEmployee(upDatedEmployee)
 
     fetch(`/api/employees/${employeeId}`,
      {method: "PATCH", headers: {"Content-type": "application/json"}, 
@@ -35,7 +36,10 @@ const HandleSubmit = () => {
         { employee && 
         <div>
             <h1>{employee.name}</h1>
-            <p>{employee.notes}</p>
+            <ul>
+            {employee.notes.map((note, index)=>
+            <li key={employee._id+index}>{note}</li>)}
+            </ul>
             <input placeholder={"Update notes"} onChange={(e) => HandleUpdateNotes(e.target.value)}></input>
             <button onClick={HandleSubmit}>Submit</button>
         </div> }
