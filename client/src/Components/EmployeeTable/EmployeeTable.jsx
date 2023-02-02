@@ -81,6 +81,9 @@ const EmployeeTable = ({ employees, onDelete, setEmployees }) => {
               <td style={{color: employee.fav_color}}>{employee.fav_color}</td>
               <td><input checked={employee.present} type={"checkbox"} onChange={(e) => handleCheckBoxChange(employee, e.target.checked)} ></input></td>
               <td>
+                <Link to={`/employee/${employee._id}/notes/`}>
+                  <button type="button">Notes</button>
+                </Link>
                 <Link to={`/update/${employee._id}`}>
                   <button type="button">Update</button>
                 </Link>

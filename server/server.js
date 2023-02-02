@@ -59,8 +59,11 @@ app.post("/api/employees/", async (req, res, next) => {
 
 app.patch("/api/employees/:id", async (req, res, next) => {
   const employee = req.body;
+  console.log("PATCH");
+  console.log(employee)
 
   try {
+    console.log(req.employee)
     const updated = await req.employee.set(employee).save();
     return res.json(updated);
   } catch (err) {
