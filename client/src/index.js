@@ -13,7 +13,7 @@ import EquipmentCreator from "./Pages/EquipmentCreator";
 import EquipmentUpdater from "./Pages/EquipmentUpdater";
 import EmployeeMissing from "./Pages/EmployeeMissing";
 import EmployeeNotes from "./Components/EmployeeNotes";
-
+import TrainingSessions from "./Components/TrainingSessions";
 
 import "./index.css";
 import TableTest from "./Pages/TableTest";
@@ -48,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "/top-paid",
         element: <EmployeeList path={"/top-paid"}/>,
+      },
+      {
+        path: "/training-sessions",
+        element: <TrainingSessions />,
       },
       {
         path: "/equipments",

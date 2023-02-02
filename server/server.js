@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const EmployeeModel = require("./db/employee.model");
 const EquipmentModel = require("./db/equipment.model");
+const TrainingModel = require("./db/training.model")
 
 const { MONGO_URL, PORT = 8080 } = process.env;
 
@@ -132,6 +133,22 @@ app.delete("/api/equipments/:id", async (req, res, next) => {
   try {
     const deleted = await req.equipment.delete();
     return res.json(deleted);
+  } catch (err) {
+    return next(err);
+  }
+});
+
+app.get("/api/trainings/", async (req, res) => {
+  const trainings = await TrainingModel.find();
+  return res.json(trainings);
+});
+
+app.post("/api/trainings/", async (req, res, next) => {
+  const training = req.body;
+
+  try {
+    const saved = await TrainingModel.create(training);
+    return res.json(saved);
   } catch (err) {
     return next(err);
   }

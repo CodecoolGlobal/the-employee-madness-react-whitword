@@ -2,15 +2,6 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-const TrainingSchema = new Schema({
-  title: {
-    type: String,
-    required: true
-  },
-  difficulty: {
-    type: String,
-    required: true
-  }
-});
+const TrainingSchema = new Schema([{ title: String, difficulty: String }]);
 
 module.exports = mongoose.model("Training", TrainingSchema);
