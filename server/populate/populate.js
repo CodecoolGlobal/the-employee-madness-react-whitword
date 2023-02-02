@@ -33,7 +33,7 @@ const populateEmployees = async () => {
     present: pick(randomPresent),
     starting_date: new Date((Math.floor(Math.random() * (2022 - 1990) + 1990)), (Math.floor(Math.random() * (12 - 1) + 1)), 2),
     fav_color: pick(colors),
-    notes: ""
+    notes: []
   }));
 
   await EmployeeModel.create(...employees);

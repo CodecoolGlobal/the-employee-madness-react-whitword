@@ -22,11 +22,11 @@ const HandleSubmit = () => {
     console.log(newNote)
     const upDatedEmployee = {...employee}
     console.log(upDatedEmployee);
-    upDatedEmployee.notes = newNote;
+    upDatedEmployee.notes.push(newNote);
 
     fetch(`/api/employees/${employeeId}`,
      {method: "PATCH", headers: {"Content-type": "application/json"}, 
-     body: JSON.stringify(upDatedEmployee)})
+     body: JSON.stringify({notes: upDatedEmployee.notes})})
     .then((res)=> res.json())
     .then((res)=> console.log(res))
 }

@@ -25,7 +25,7 @@ const EmployeeSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  notes: String,
+  notes: [{type: String}]
   });
 
 module.exports = mongoose.model("Employee", EmployeeSchema);
