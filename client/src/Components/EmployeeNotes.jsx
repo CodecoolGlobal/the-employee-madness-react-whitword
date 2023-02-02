@@ -12,7 +12,7 @@ useEffect(() => {
     return () => {
         
     };
-}, []);
+}, [employeeId]);
 const [newNote, setNewNote] = useState()
 const HandleUpdateNotes = (value) => {
     setNewNote(value);
@@ -25,7 +25,7 @@ const HandleSubmit = () => {
     upDatedEmployee.notes = newNote;
 
     fetch(`/api/employees/${employeeId}`,
-     {method: "PATCH", "Content-type": "application/json", 
+     {method: "PATCH", headers: {"Content-type": "application/json"}, 
      body: JSON.stringify(upDatedEmployee)})
     .then((res)=> res.json())
     .then((res)=> console.log(res))
