@@ -7,6 +7,7 @@ const names = require("./names.json");
 const levels = require("./levels.json");
 const colors = require("./colors.json");
 const positions = require("./positions.json");
+const trainings = require("./trainings.json");
 const EmployeeModel = require("../db/employee.model");
 
 const mongoUrl = process.env.MONGO_URL;
@@ -21,6 +22,7 @@ const pick = (from) => from[Math.floor(Math.random() * (from.length - 0))];
 const populateEmployees = async () => {
   await EmployeeModel.deleteMany({});
   const randomPresent = [true, false];
+  const difficulty = ["beginner", "intermediate", "advanced"]
 
   const employees = names.map((name) => ({
     name,
@@ -31,7 +33,7 @@ const populateEmployees = async () => {
     present: pick(randomPresent),
     starting_date: new Date((Math.floor(Math.random() * (2022 - 1990) + 1990)), (Math.floor(Math.random() * (12 - 1) + 1)), 2),
     fav_color: pick(colors),
-    trainings: [],
+    trainings: [{title:pick(trainings), difficulty: pick(difficulty)}],
     notes: []
   }));
 

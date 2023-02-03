@@ -25,7 +25,7 @@ const EmployeeSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  trainings: [{type: String}],
+  trainings: [{ title: String, difficulty: String }],
   notes: [{type: String}]
   });
 

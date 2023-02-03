@@ -42,23 +42,23 @@ const TrainingSessions = () => {
     return (
         <>
         { trainings &&
-        <div>
+        <div style={{width:500, fontSize:20, margin:"auto"}}>
             <h1>Training sessions</h1>
             <ul>{trainings.map((training, index) =>
                 <li key={index}>{training.title} --- {training.difficulty}</li>)}
             </ul>
             </div>}
-            <form onSubmit={(e)=>{e.preventDefault(); HandleSubmit()}}>
+            <form style={{width:500, fontSize:20, margin:"auto"}} onSubmit={(e)=>{e.preventDefault(); HandleSubmit()}}>
                 <input onChange={(e)=>{HandleInput(e.target.value)}}></input>
-               <div style={{display:"flex", flexWrap:"wrap"}}>
+               <div style={{margin:"auto", display:"flex", flexWrap:"wrap"}}>
                 <input type={"radio"} checked={select==="beginner"} id={"beginner"} value={"beginner"} onChange={() => HandleCheckBox("beginner")}></input>
                 <label>beginner</label>
                 <input type={"radio"} checked={select==="intermediate"} id={"intermediate"} value={"intermediate"} onChange={() => HandleCheckBox("intermediate")}></input>
                 <label>intermediate</label>
                 <input type={"radio"} checked={select==="advanced"} id={"advanced"} value={"advanced"} onChange={() => HandleCheckBox("advanced")}></input>
                 <label>advanced</label>
-                </div>
-                <input type="submit" value="Submit"/>
+               </div>
+                <input style={{width:200, fontSize:20, margin:"auto"}} type="submit" value="Submit"/>
             </form>
             </>
             );

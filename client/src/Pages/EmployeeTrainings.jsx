@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 const EmployeeTrainings = () => {
    const { employeeId } = useParams();
    const [employee, setEmployee] = useState()
-   const [trainings, setTrainings] = useState();
+   const [trainings, setTrainings] = useState([]);
    const [selectedTrainings, setselectedTrainings] = useState([]);
 
    useEffect(() => {
@@ -26,51 +26,51 @@ useEffect(() => {
 }, []);
 const trainingSchema = (training) => {
     return(
-        `title: ${training.title}, difficulty: ${training.difficulty}`
+        {title: training[0].title, difficulty: training[0].difficulty}
     )
 }
 const HandleSelect = (value) => {
+    const trainingDetails = trainings.filter(i=>i._id===value)
     const copyOfSelectedTrainings = [...selectedTrainings]
-    // setselectedTrainings([...copyOfSelectedTrainings, value])
-    copyOfSelectedTrainings.push(value)
-    setselectedTrainings(copyOfSelectedTrainings)
-
+    setselectedTrainings([...copyOfSelectedTrainings, trainingSchema(trainingDetails)])
 }
 const HandleSubmit = async () => {
-    console.log(selectedTrainings)
+    console.log("selectedTrainings", selectedTrainings);
     const upDatedEmployee = {...employee}
-    upDatedEmployee.trainings.push(...selectedTrainings);
+    upDatedEmployee.trainings = [...upDatedEmployee.trainings, ...selectedTrainings]
     setEmployee(upDatedEmployee)
-    console.log(upDatedEmployee.trainings);
     fetch(`/api/employees/${employeeId}`,
      {method: "PATCH", headers: {"Content-type": "application/json"}, 
      body: JSON.stringify({trainings: upDatedEmployee.trainings})})
     .then((res)=> res.json())
-    .then((res)=> console.log(res))    
+    .then((res)=> console.log(res))
+    .then((res)=>setselectedTrainings([]))   
 }
 
     return ( 
         <>
         {employee && trainings &&
-        <div>
+        <div style={{width:500, fontSize:20, textAlign:"center", margin:"auto"}}>
         <h1>{employee.name}</h1>
-        <p>Completed trainings</p>
+        <h2>Completed trainings</h2>
         <ul>{employee.trainings.map((training, index)=>
-            <li key={employee._id+index}>{training}</li>
+            <li key={employee._id+index}>{training.title} - {training.difficulty}</li>
         )} 
         </ul>
+        <h2>Available trainings</h2>
         <form onSubmit={(e)=>{e.preventDefault(); HandleSubmit()}}>
-        <select onChange={(e) => HandleSelect(e.target.value)}>
-            {trainings.map((training, index)=>
-                <option key={employee._id+index} value={trainingSchema(training)}>{training.title}</option>
+        <select style={{margin:"auto", textAlign:"center", width:300}} onChange={(e) => HandleSelect(e.target.value)}>
+            <option key={"default"}>Select a training</option>
+            {trainings.map((training)=>
+                <option key={employee._id+training._id} value={training._id}>{training.title} - {training.difficulty}</option>
                 )}
         </select>
-        <h2>Selected trainings to add:</h2>
+        <h3>Selected trainings:</h3>
         <ul style={{color:"green"}}>
         {selectedTrainings.map((training, index)=>
-        <li key={training+index}>{training}</li>)}
+        <li key={training+index}>{training.title} - {training.difficulty}</li>)}
         </ul>
-        <button onClick={HandleSubmit}>Submit</button>
+        <button style={{margin:"auto"}} onClick={HandleSubmit}>Save</button>
         </form>
         </div>
         }
