@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 const TrainingSessions = () => {
 
     const [trainings, setTrainings] = useState();
+    const [upDatedTrainings, setUpDatedTrainings] = useState();
 
     useEffect(() => {
         fetch("/api/trainings")
@@ -11,15 +12,13 @@ const TrainingSessions = () => {
 
         // return () => {
         // };
-    }, []);
+    }, [upDatedTrainings]);
 
     const [newTraining, setNewTraining] = useState({title: "", difficulty: ""})
     const [select, setSelect] = useState(null)
 
     const HandleSubmit = () => {
-        setTrainings([...trainings, newTraining])
-
-            fetch("/api/trainings", {
+                fetch("/api/trainings", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
@@ -27,6 +26,7 @@ const TrainingSessions = () => {
                 body: JSON.stringify(newTraining),
               }).then((res) => res.json())
               .then((res)=> console.log(res))
+              .then((res)=> setUpDatedTrainings([...trainings, newTraining]))
     }
     const HandleCheckBox = (select) => {
         const copyOfNewTraining = {...newTraining}

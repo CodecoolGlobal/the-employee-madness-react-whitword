@@ -20,10 +20,8 @@ useEffect(() => {
     fetch("/api/trainings")
         .then((res) => res.json())
         .then((res) => setTrainings(res))
-
-    // return () => {
-    // };
 }, []);
+
 const trainingSchema = (training) => {
     return(
         {title: training[0].title, difficulty: training[0].difficulty}
@@ -34,11 +32,12 @@ const HandleSelect = (value) => {
     const copyOfSelectedTrainings = [...selectedTrainings]
     setselectedTrainings([...copyOfSelectedTrainings, trainingSchema(trainingDetails)])
 }
-const HandleSubmit = async () => {
+const HandleSubmit = () => {
     console.log("selectedTrainings", selectedTrainings);
     const upDatedEmployee = {...employee}
     upDatedEmployee.trainings = [...upDatedEmployee.trainings, ...selectedTrainings]
     setEmployee(upDatedEmployee)
+    
     fetch(`/api/employees/${employeeId}`,
      {method: "PATCH", headers: {"Content-type": "application/json"}, 
      body: JSON.stringify({trainings: upDatedEmployee.trainings})})
@@ -58,7 +57,7 @@ const HandleSubmit = async () => {
         )} 
         </ul>
         <h2>Available trainings</h2>
-        <form onSubmit={(e)=>{e.preventDefault(); HandleSubmit()}}>
+        <form onSubmit={(e)=>{e.preventDefault()}}>
         <select style={{margin:"auto", textAlign:"center", width:300}} onChange={(e) => HandleSelect(e.target.value)}>
             <option key={"default"}>Select a training</option>
             {trainings.map((training)=>
