@@ -51,7 +51,7 @@ const EmployeeTable = ({ employees, onDelete, setEmployees }) => {
         <ArrangeSelectors employees={employees} setEmployees={setEmployees} />
         <FilterInputField allLevels={allLevelsWithNoDuplicates} allPositions={allPositionsWithNoDuplicates} setLevel={setLevel} setPosition={setPosition} />
         <Link style={{color: "white", backgroundColor: "rgb(76, 117, 219)", padding: 20, borderRadius: 5}} to="/top-paid">Top-paid employees</Link>
-        <Link style={{color: "white", backgroundColor: "rgb(76, 117, 219)", marginLeft: 310, padding: 20, borderRadius: 5}} to="/missing">Missing employees</Link>
+        <Link style={{color: "white", backgroundColor: "rgb(76, 117, 219)", marginLeft: 200, padding: 20, borderRadius: 5}} to="/missing">Missing employees</Link>
       </div>
       <table>
         <thead>
@@ -81,6 +81,9 @@ const EmployeeTable = ({ employees, onDelete, setEmployees }) => {
               <td style={{color: employee.fav_color}}>{employee.fav_color}</td>
               <td><input checked={employee.present} type={"checkbox"} onChange={(e) => handleCheckBoxChange(employee, e.target.checked)} ></input></td>
               <td>
+                <Link to={`/employee/${employee._id}/trainings`}>
+                <button type="button">Trainings</button>
+                </Link>
                 <Link to={`/employee/${employee._id}/notes/`}>
                   <button type="button">Notes</button>
                 </Link>

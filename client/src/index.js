@@ -12,8 +12,9 @@ import EquipmentList from "./Pages/EquipmentList";
 import EquipmentCreator from "./Pages/EquipmentCreator";
 import EquipmentUpdater from "./Pages/EquipmentUpdater";
 import EmployeeMissing from "./Pages/EmployeeMissing";
-import EmployeeNotes from "./Components/EmployeeNotes";
-import TrainingSessions from "./Components/TrainingSessions";
+import EmployeeNotes from "./Pages/EmployeeNotes";
+import TrainingSessions from "./Pages/EmployeeTrainingSessions";
+import EmployeeTrainings from "./Pages/EmployeeTrainings";
 
 import "./index.css";
 import TableTest from "./Pages/TableTest";
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "/training-sessions",
         element: <TrainingSessions />,
+      },
+      {
+        path: "/employee/:employeeId/trainings",
+        element: <EmployeeTrainings />,
       },
       {
         path: "/equipments",

@@ -23,3 +23,15 @@ Content-Type:  application/json
 {
   "name": "Adam"
 }
+
+###
+GET http://localhost:8080/api/trainings/
+
+###
+POST http://localhost:8080/api/trainings/
+Content-Type: application/json
+
+{
+  "title": "test",
+  "difficulty": "test"
+}
