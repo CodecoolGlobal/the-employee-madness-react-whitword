@@ -87,6 +87,9 @@ const EmployeeTable = ({ employees, onDelete, setEmployees }) => {
                 <Link to={`/employee/${employee._id}/notes/`}>
                   <button type="button">Notes</button>
                 </Link>
+                <Link to={`/kittens/${employee._id}/`}>
+                  <button type="button">Kittens</button>
+                </Link>
                 <Link to={`/update/${employee._id}`}>
                   <button type="button">Update</button>
                 </Link>
