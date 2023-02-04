@@ -4,7 +4,8 @@ const { Schema } = mongoose;
 
 const KittenSchema = new Schema([{ 
     name: String, 
-    weight: Number, 
+    weight: Number,
+    employeeName: String,
     employee: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Employee'},

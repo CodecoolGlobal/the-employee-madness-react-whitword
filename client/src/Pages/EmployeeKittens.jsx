@@ -27,6 +27,7 @@ const EmployeeKittens = () => {
         const newKitty = {
             name: kittenName,
             weight: kittenWeight,
+            employeeName: employee.name,
             employee: employeeId
         }
         setKittenName(''); 

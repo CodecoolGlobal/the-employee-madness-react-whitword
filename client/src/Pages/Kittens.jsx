@@ -31,7 +31,7 @@ const Kittens = () => {
                     <td>{kitty.weight}kg</td>
                     <td>
                     <Link to={`/kittens/${kitty.employee}`}>
-                    <button type="button">Owner</button>
+                    <button type="button">{kitty.employeeName}</button>
                     </Link>
                     </td>
                 </tr>
