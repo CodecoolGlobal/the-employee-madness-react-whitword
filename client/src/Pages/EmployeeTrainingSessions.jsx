@@ -43,22 +43,27 @@ const TrainingSessions = () => {
         <>
         { trainings &&
         <div style={{width:500, fontSize:20, margin:"auto"}}>
-            <h1>Training sessions</h1>
+            <h1 style={{textAlign:"center"}}>Training sessions</h1>
             <ul>{trainings.map((training, index) =>
                 <li key={index}>{training.title} --- {training.difficulty}</li>)}
             </ul>
             </div>}
             <form style={{width:500, fontSize:20, margin:"auto"}} onSubmit={(e)=>{e.preventDefault(); HandleSubmit()}}>
+                <h2 style={{textAlign:"center"}}>Add new training</h2>
                 <input onChange={(e)=>{HandleInput(e.target.value)}}></input>
-               <div style={{margin:"auto", display:"flex", flexWrap:"wrap"}}>
+                <div style={{margin:"auto", display:"flex", flexWrap:"wrap", padding:10}}>
                 <input type={"radio"} checked={select==="beginner"} id={"beginner"} value={"beginner"} onChange={() => HandleCheckBox("beginner")}></input>
                 <label>beginner</label>
+                </div>
+                <div style={{margin:"auto", display:"flex", flexWrap:"wrap", padding:10}}>
                 <input type={"radio"} checked={select==="intermediate"} id={"intermediate"} value={"intermediate"} onChange={() => HandleCheckBox("intermediate")}></input>
                 <label>intermediate</label>
+                </div>
+                <div style={{margin:"auto", display:"flex", flexWrap:"wrap", padding:10}}>
                 <input type={"radio"} checked={select==="advanced"} id={"advanced"} value={"advanced"} onChange={() => HandleCheckBox("advanced")}></input>
                 <label>advanced</label>
-               </div>
-                <input style={{width:200, fontSize:20, margin:"auto"}} type="submit" value="Submit"/>
+                </div>
+                <input style={{width:200, fontSize:20, marginLeft:150, marginTop:10}} type="submit" value="Submit"/>
             </form>
             </>
             );
