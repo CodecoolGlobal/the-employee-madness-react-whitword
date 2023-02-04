@@ -24,18 +24,29 @@ const EmployeeKittens = () => {
     }
 
     const HandleSubmit = () => {
-       const newKittens = [{
-                name: kittenName,
-                weight: kittenWeight,
-                employee: employeeId
-            }, ...employee.kittens]
+        const newKitty = {
+            name: kittenName,
+            weight: kittenWeight,
+            employee: employeeId
+        }
+        setKittenName(''); 
+        setKittenWeight('')
+       const newKittens = [newKitty, ...employee.kittens]
         
             fetch(`/api/employees/${employeeId}`,
             {method: "PATCH", headers: {"Content-type": "application/json"}, 
             body: JSON.stringify({kittens: newKittens})})
            .then((res)=> res.json())
            .then((res) => setKittens(newKittens))
-           .then((res) => {setKittenName(); setKittenWeight()})
+
+           fetch("/api/kittens", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newKitty),
+            }).then((res) => res.json())
+            .then((res)=> console.log(res))
     }
 
     return ( 
@@ -48,10 +59,10 @@ const EmployeeKittens = () => {
         )}
         </div>
         }
-        <form style={{width:500, fontSize:20, margin:"auto"}} onSubmit={(e)=>{e.preventDefault(); HandleSubmit()}}>
+        <form style={{width:500, fontSize:20, margin:"auto"}} onSubmit={(e)=>{e.preventDefault()}}>
             <h2>Add new kitten</h2>
-            <input placeholder={"Kitten name"} onChange={(e)=>{HandleInput(e.target.value, "name")}}></input>
-            <input placeholder={"Kitten weight"} onChange={(e)=>{HandleInput(e.target.value, "weight")}}></input>
+            <input id="name" value={kittenName} placeholder={"Kitten name"} onChange={(e)=>{HandleInput(e.target.value, "name")}}></input>
+            <input id="weight" value={kittenWeight} placeholder={"Kitten weight"} onChange={(e)=>{HandleInput(e.target.value, "weight")}}></input>
             <button style={{margin:"auto"}} onClick={HandleSubmit}>Save</button>
         </form>
         </>

@@ -15,7 +15,8 @@ import EmployeeMissing from "./Pages/EmployeeMissing";
 import EmployeeNotes from "./Pages/EmployeeNotes";
 import TrainingSessions from "./Pages/EmployeeTrainingSessions";
 import EmployeeTrainings from "./Pages/EmployeeTrainings";
-import EmployeeKittens from "./Pages/EmployeeKittens";
+import EmployeeKittens from "./Pages/EmployeeKittens"; 
+import Kittens from "./Pages/Kittens"; 
 
 import "./index.css";
 import TableTest from "./Pages/TableTest";
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: "/kittens/:employeeId",
         element: <EmployeeKittens />,
+      },
+      {
+        path: "/allkittens/",
+        element: <Kittens />
       },
       {
         path: "/equipments",

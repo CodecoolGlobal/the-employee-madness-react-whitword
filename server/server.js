@@ -3,7 +3,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const EmployeeModel = require("./db/employee.model");
 const EquipmentModel = require("./db/equipment.model");
-const TrainingModel = require("./db/training.model")
+const TrainingModel = require("./db/training.model");
+const KittenModel = require("./db/kitten.model")
 
 const { MONGO_URL, PORT = 8080 } = process.env;
 
@@ -148,6 +149,22 @@ app.post("/api/trainings/", async (req, res, next) => {
 
   try {
     const saved = await TrainingModel.create(training);
+    return res.json(saved);
+  } catch (err) {
+    return next(err);
+  }
+});
+
+app.get("/api/kittens/", async (req, res) => {
+  const kittens = await KittenModel.find();
+  return res.json(kittens);
+});
+
+app.post("/api/kittens/", async (req, res, next) => {
+  const kitten = req.body;
+
+  try {
+    const saved = await KittenModel.create(kitten);
     return res.json(saved);
   } catch (err) {
     return next(err);

@@ -2,42 +2,38 @@ import { useState, useEffect } from "react";
 
 const TrainingSessions = () => {
 
-    const [trainings, setTrainings] = useState();
-    const [upDatedTrainings, setUpDatedTrainings] = useState();
+    const [trainings, setTrainings] = useState('');
+    const [upDatedTrainings, setUpDatedTrainings] = useState([]);
 
     useEffect(() => {
         fetch("/api/trainings")
             .then((res) => res.json())
             .then((res) => setTrainings(res))
-
-        // return () => {
-        // };
     }, [upDatedTrainings]);
 
-    const [newTraining, setNewTraining] = useState({title: "", difficulty: ""})
+    const [newTraining, setNewTraining] = useState()
+    const [givenTitle, setGivenTitle] = useState('');
     const [select, setSelect] = useState(null)
 
     const HandleSubmit = () => {
-                fetch("/api/trainings", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(newTraining),
-              }).then((res) => res.json())
-              .then((res)=> console.log(res))
-              .then((res)=> setUpDatedTrainings([...trainings, newTraining]))
+        fetch("/api/trainings", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newTraining),
+        }).then((res) => res.json())
+        .then((res)=> console.log(res))
+        .then((res)=> setUpDatedTrainings([...trainings, newTraining]))
+        .then((res) => {setNewTraining(''); setGivenTitle(''); setSelect('')})
     }
     const HandleCheckBox = (select) => {
-        const copyOfNewTraining = {...newTraining}
-        copyOfNewTraining.difficulty = select
         setSelect(select)
-        setNewTraining(copyOfNewTraining)
+        setNewTraining({title: givenTitle, difficulty: select})
     }
     const HandleInput = (input) => {
-        const copyOfNewTraining = {...newTraining}
-        copyOfNewTraining.title = input
-        setNewTraining(copyOfNewTraining)
+        setGivenTitle(input)
+        setNewTraining({title: givenTitle, difficulty: select})
     }
     return (
         <>
@@ -50,7 +46,7 @@ const TrainingSessions = () => {
             </div>}
             <form style={{width:500, fontSize:20, margin:"auto"}} onSubmit={(e)=>{e.preventDefault(); HandleSubmit()}}>
                 <h2 style={{textAlign:"center"}}>Add new training</h2>
-                <input onChange={(e)=>{HandleInput(e.target.value)}}></input>
+                <input value={givenTitle} placeholder={"Training-session title" } onChange={(e)=>{HandleInput(e.target.value)}}></input>
                 <div style={{margin:"auto", display:"flex", flexWrap:"wrap", padding:10}}>
                 <input type={"radio"} checked={select==="beginner"} id={"beginner"} value={"beginner"} onChange={() => HandleCheckBox("beginner")}></input>
                 <label>beginner</label>
