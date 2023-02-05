@@ -27,6 +27,7 @@ const EmployeeSchema = new Schema({
   },
   trainings: [{ title: String, difficulty: String }],
   kittens: [{ name: String, weight: Number }],
+  equipments: [{ _id: Number, name: String, type: String }],
   notes: [{type: String}]
   });
 

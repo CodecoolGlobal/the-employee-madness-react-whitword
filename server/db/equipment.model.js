@@ -7,6 +7,9 @@ const EquipmentSchema = new Schema({
   name: String,
   type: String,
   amount: Number,
+  employeeRefs: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Employee' }],
   created: {
     type: Date,
     default: Date.now,

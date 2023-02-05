@@ -15,8 +15,8 @@ const EmployeeKittens = () => {
             
         };
     }, [employeeId, kittens]);
-    const [kittenName, setKittenName] = useState();
-    const [kittenWeight, setKittenWeight] = useState();
+    const [kittenName, setKittenName] = useState('');
+    const [kittenWeight, setKittenWeight] = useState('');
 
     const HandleInput = (value, input) => {
         if (input==="name") setKittenName(value)

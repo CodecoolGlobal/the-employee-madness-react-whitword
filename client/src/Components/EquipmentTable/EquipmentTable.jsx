@@ -10,6 +10,7 @@ const EquipmentTable = ({ equipments, onDelete, setEquipments }) => {
             <th>Name</th>
             <th>Type</th>
             <th>Amount</th>
+            <th>Employees assigned</th>
             <th />
           </tr>
         </thead>
@@ -19,6 +20,13 @@ const EquipmentTable = ({ equipments, onDelete, setEquipments }) => {
               <td>{equipment.name}</td>
               <td>{equipment.type}</td>
               <td>{equipment.amount}</td>
+              <td>{equipment.employeeRefs.map(employeeId=>
+              <div>
+                <Link to={`/employee/${employeeId}/equipments`}>
+                Employee's equipments
+                  </Link>
+                </div>
+              )}</td>
               <td>
                 <Link to={`/equipments/update/${equipment._id}`}>
                   <button type="button">Update</button>

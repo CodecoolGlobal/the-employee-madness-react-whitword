@@ -20,7 +20,8 @@ const populateEquipments = async () => {
   const equipments = equipmentsJson.map((equipment) => ({
     name: equipment.name,
     type: equipment.type,
-    amount: Math.floor(Math.random() * (25 - 1) + 1) //randomNumber between 1 and 25
+    amount: Math.floor(Math.random() * (25 - 1) + 1), //randomNumber between 1 and 25
+    employeeRefs: [],
   }));
 
   await EquipmentModel.create(...equipments);

@@ -15,6 +15,7 @@ import EmployeeMissing from "./Pages/EmployeeMissing";
 import EmployeeNotes from "./Pages/EmployeeNotes";
 import TrainingSessions from "./Pages/EmployeeTrainingSessions";
 import EmployeeTrainings from "./Pages/EmployeeTrainings";
+import EmployeeEquipments from "./Pages/EmployeeEquipments";
 import EmployeeKittens from "./Pages/EmployeeKittens"; 
 import Kittens from "./Pages/Kittens"; 
 
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "/employee/:employeeId/trainings",
         element: <EmployeeTrainings />,
+      },
+      {
+        path: "/employee/:employeeId/equipments",
+        element: <EmployeeEquipments />,
       },
       {
         path: "/kittens/:employeeId",
