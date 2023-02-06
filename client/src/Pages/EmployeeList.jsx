@@ -15,6 +15,7 @@ const deleteEmployee = (id) => {
 const EmployeeList = ({path}) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
+  const [divisions, setDivisions] = useState();
 
   const handleDelete = (id) => {
     deleteEmployee(id).catch((err) => {
@@ -44,6 +45,13 @@ const EmployeeList = ({path}) => {
     return () => controller.abort();
   }, []);
 
+  useEffect(() => {
+    fetch("./divisions")
+    .then((res)=>res.json())
+    .then((res)=> setDivisions(res))
+    // return () => {
+    // };
+  }, []);
   if (loading) {
     return <Loading />;
   }
@@ -53,7 +61,7 @@ const EmployeeList = ({path}) => {
     filteredEmployees = ([...data].sort((a, b) => b.current_salary-a.current_salary)).splice(0,3)
   }
   return (
-        <EmployeeTable employees={filteredEmployees} onDelete={handleDelete} setEmployees={setData}/>
+        <EmployeeTable employees={filteredEmployees} onDelete={handleDelete} setEmployees={setData} divisions={divisions}/>
   )
 };
 

@@ -5,8 +5,7 @@ import ArrangeSelectors from "../EmployeeArrangeSelectors";
 import { useState } from "react";
 import ConfirmDeleteModal from "../../Pages/EmployeeConfirmDelete";
 
-const EmployeeTable = ({ employees, onDelete, setEmployees }) => {
-
+const EmployeeTable = ({ employees, onDelete, setEmployees, divisions }) => {
   let allPositions = [];
   employees.map(i => (allPositions.push(i.position)));
   const allPositionsWithNoDuplicates = allPositions.reduce((accumulator, currentValue) => {
@@ -59,6 +58,7 @@ const EmployeeTable = ({ employees, onDelete, setEmployees }) => {
             <th>Name</th>
             <th>Level</th>
             <th>Position</th>
+            <th>Division</th>
             <th>Current salary</th>
             <th>Desired salary</th>
             <th>Difference(salary)</th>
@@ -74,6 +74,9 @@ const EmployeeTable = ({ employees, onDelete, setEmployees }) => {
               <td>{employee.name}</td>
               <td>{employee.level}</td>
               <td>{employee.position}</td>
+              {employee.division ?
+              <td>{divisions.filter((division)=>division._id===employee.division)[0].name}</td>
+              :<td>N/D</td>}
               <td>{employee.current_salary / 1000.0}k 🃏</td>
               <td>{employee.desired_salary / 1000.0}k 🃏</td>
               <td>{(employee.current_salary - employee.desired_salary) / 1000.0}k 🃏</td>
