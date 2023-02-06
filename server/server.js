@@ -6,6 +6,7 @@ const EquipmentModel = require("./db/equipment.model");
 const TrainingModel = require("./db/training.model");
 const KittenModel = require("./db/kitten.model");
 const ToolModel = require("./db/tool.model");
+const DivisionModel = require("./db/division.model");
 
 const { MONGO_URL, PORT = 8080 } = process.env;
 
@@ -183,6 +184,60 @@ app.post("/tools/", async (req, res, next) => {
   try {
     const saved = await ToolModel.create(tool);
     return res.json(saved);
+  } catch (err) {
+    return next(err);
+  }
+});
+
+app.use("/divisions/:id", async (req, res, next) => {
+  let division = null;
+
+  try {
+    division = await DivisionModel.findById(req.params.id);
+  } catch (err) {
+    return next(err);
+  }
+
+  if (!division) {
+    return res.status(404).end("Division not found");
+  }
+
+  req.division = division;
+  next();
+});
+
+app.get("/divisions/", async (req, res) => {
+  const divisions = await DivisionModel.find();
+  return res.json(divisions);
+});
+
+app.post("/divisions/", async (req, res, next) => {
+  const division = req.body;
+
+  try {
+    const saved = await DivisionModel.create(division);
+    return res.json(saved);
+  } catch (err) {
+    return next(err);
+  }
+});
+
+app.delete("/divisions/:id", async (req, res) => {
+  try {
+    await req.division.delete();
+    res.status(204).send()
+  } catch (err) {
+    return next(err);
+  }
+}
+)
+
+app.patch("/divisions/:id", async (req, res, next) => {
+  const division = req.body;
+
+  try {
+    const updated = await req.division.set(division).save();
+    return res.json(updated);
   } catch (err) {
     return next(err);
   }

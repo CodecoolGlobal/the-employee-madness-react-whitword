@@ -11,6 +11,10 @@ const EmployeeSchema = new Schema({
     type: Number,
     default: 0
   },
+  division: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Division'
+  },
   desired_salary: {
     type: Number,
     default: 0

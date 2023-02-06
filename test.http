@@ -35,3 +35,29 @@ Content-Type: application/json
   "title": "test",
   "difficulty": "test"
 }
+
+###
+GET http://localhost:8080/divisions/
+
+###
+POST http://localhost:8080/divisions/
+Content-Type: application/json
+
+{
+  "name": "PR",
+  "boss": "63dfc344418bdbdf47331d65",
+  "budget": 500000,
+  "location": { "city": "London", "country": "UK" },
+  "employees": ["63dfc344418bdbdf47331d65"]
+}
+
+###
+DELETE http://localhost:8080/divisions/63e0d4af5655364124f8b666
+
+###
+PATCH http://localhost:8080/divisions/63e0d4af5655364124f8b666
+Content-Type:  application/json
+
+{
+  "employees": ["63dfc344418bdbdf47331d65", "63dfc344418bdbdf47331d63", "63dfc344418bdbdf47331d5d"]
+}

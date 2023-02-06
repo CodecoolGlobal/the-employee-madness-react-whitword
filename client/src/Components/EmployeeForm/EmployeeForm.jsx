@@ -1,4 +1,10 @@
+import { useEffect, useState } from "react";
+
+
 const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
+
+  const [divisions, setDivisions] = useState();
+
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -12,6 +18,15 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
 
     return onSave(employee);
   };
+
+useEffect(() => {
+  fetch("/divisions")
+  .then((res) => res.json())
+  .then((res) => setDivisions(res))
+  return () => {
+  };
+
+}, []);
 
   return (
     <form className="EmployeeForm" onSubmit={onSubmit}>
@@ -71,6 +86,21 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
           name="fav_color"
           id="fav_color"
         />
+      </div>
+
+      <div className="control">
+        <label htmlFor="division">Choose a division</label>
+        <select
+        id="division"
+        name="division">
+          <option >Select division</option>
+        {divisions && divisions.map(division=>
+          <option 
+          key={division._id} 
+          defaultValue={employee && employee.division ? employee.division : null}
+          value={division._id}
+           >{division.name}</option>)}
+        </select>
       </div>
 
       <div className="buttons">

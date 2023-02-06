@@ -19,6 +19,7 @@ import EmployeeEquipments from "./Pages/EmployeeEquipments";
 import EmployeeKittens from "./Pages/EmployeeKittens"; 
 import Kittens from "./Pages/Kittens"; 
 import Tools from "./Pages/Tools";
+import Divisions from "./Pages/Divisions";
 
 import "./index.css";
 import TableTest from "./Pages/TableTest";
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
       {
         path: "/equipments/update/:id",
         element: <EquipmentUpdater />,
+      },
+      {
+        path:"/divisions",
+        element: <Divisions />,
       },
       {
         path: "/tools/",
