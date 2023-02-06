@@ -8,6 +8,7 @@
     "populate.employee": "node ./populate/populate.employee.js",
     "populate.equipment": "node ./populate/populate.equipment.js",
     "populate.training": "node ./populate/populate.training.js",
+    "populate.tool": "node ./populate/populate.tool.js",
     "format": "prettier -w ."
   },
   "keywords": [],
