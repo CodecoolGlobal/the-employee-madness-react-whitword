@@ -9,6 +9,7 @@
     "populate.equipment": "node ./populate/populate.equipment.js",
     "populate.training": "node ./populate/populate.training.js",
     "populate.tool": "node ./populate/populate.tool.js",
+    "populate.location": "node ./populate/populate.location.js",
     "format": "prettier -w ."
   },
   "keywords": [],

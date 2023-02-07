@@ -7,6 +7,7 @@ const TrainingModel = require("./db/training.model");
 const KittenModel = require("./db/kitten.model");
 const ToolModel = require("./db/tool.model");
 const DivisionModel = require("./db/division.model");
+const LocationModel = require("./db/location.model");
 
 const { MONGO_URL, PORT = 8080 } = process.env;
 
@@ -241,6 +242,22 @@ app.patch("/divisions/:id", async (req, res, next) => {
   try {
     const updated = await req.division.set(division).save();
     return res.json(updated);
+  } catch (err) {
+    return next(err);
+  }
+});
+
+app.get("/locations/", async (req, res) => {
+  const locations = await LocationModel.find();
+  return res.json(locations)
+});
+
+app.post("/locations/", async (req, res, next) => {
+  const location = req.body;
+
+  try {
+    const saved = await LocationModel.create(location);
+    return res.json(saved);
   } catch (err) {
     return next(err);
   }
