@@ -69,8 +69,9 @@ app.patch("/api/employees/:id", async (req, res, next) => {
   try {
     console.log(req.employee)
     const updated = await req.employee.set(employee).save();
+    if (employee.division !== req.employee.division) {
     const division = await DivisionModel.findById(req.employee.division);
-    await division.set(division.employees = [...division.employees, req.employee._id] ).save();
+    await division.set(division.employees = [...division.employees, req.employee._id] ).save();}
     return res.json(updated);
   } catch (err) {
     return next(err);
