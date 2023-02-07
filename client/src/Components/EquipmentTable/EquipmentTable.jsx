@@ -20,8 +20,8 @@ const EquipmentTable = ({ equipments, onDelete, setEquipments }) => {
               <td>{equipment.name}</td>
               <td>{equipment.type}</td>
               <td>{equipment.amount}</td>
-              <td>{equipment.employeeRefs.map(employeeId=>
-              <div>
+              <td>{equipment.employeeRefs.map((employeeId, index)=>
+              <div key={index}>
                 <Link to={`/employee/${employeeId}/equipments`}>
                 Employee's equipments
                   </Link>

@@ -75,7 +75,7 @@ const EmployeeTable = ({ employees, onDelete, setEmployees, divisions }) => {
               <td>{employee.level}</td>
               <td>{employee.position}</td>
               {employee.division ?
-              <td>{divisions.filter((division)=>division._id===employee.division)[0].name}</td>
+              <td>{divisions.find((division)=>division._id===employee.division).name}</td>
               :<td>N/D</td>}
               <td>{employee.current_salary / 1000.0}k 🃏</td>
               <td>{employee.desired_salary / 1000.0}k 🃏</td>

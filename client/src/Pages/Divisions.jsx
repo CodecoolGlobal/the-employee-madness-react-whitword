@@ -50,7 +50,7 @@ const Divisions = () => {
                 {divisions.map((div) =>(
                 <tr key={div._id}>
                     <td>{div.name}</td>
-                    <td>{employees.filter((r)=>r._id===div.boss)[0].name}</td>
+                    <td>{employees.find((r)=>r._id===div.boss).name}</td>
                     <td>{div.budget}</td>
                     <td>{div.location.city} -- {div.location.country}</td>
                     
